@@ -4,3 +4,4 @@ asyncio
 python-multipart
 EdgeGPT
 BingImageCreator
+aiohttp

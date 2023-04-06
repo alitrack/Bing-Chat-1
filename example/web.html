@@ -33,9 +33,12 @@
             <input class="mdui-textfield-input" type="text" id="input"/>
             <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" id="send">发送</button>
         </div>
-
+        <script>
+            const domain = window.location.host.split(':')[0];
+            console.log(domain); // 输出当前访问的域名
+        </script>
         <script type="text/javascript">
-            const WS = new WebSocket('ws://127.0.0.1:5000/ws_stream');
+            const WS = new WebSocket(`wss://${domain}/ws_stream`);
             let TEXT_DIV = null;
             
             WS.onopen = function() {

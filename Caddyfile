@@ -1,0 +1,11 @@
+:8433
+root * example
+file_server
+
+
+#reverse_proxy localhost:6000 
+@websockets {
+	header_regexp Connection Upgrade
+	header        Upgrade websocket
+}
+reverse_proxy @websockets localhost:5000

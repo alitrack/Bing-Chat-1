@@ -5,6 +5,7 @@ from typing import Union, Any, AsyncGenerator
 from fastapi import FastAPI, Request, WebSocket, Response
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 import uvicorn
 import asyncio
 import EdgeGPT
@@ -359,5 +360,10 @@ async def image(request: Request) -> Response:
     
     return GenerateResponse().success(BingImageCreator.ImageGen(uCookie).get_images(keyword))
 
+
+@APP.get("/", response_class=HTMLResponse)
+async def index():
+    with open('example/web2.html') as f:
+        return f.read()
 if __name__ == '__main__':
     uvicorn.run(APP, host=HOST, port=PORT)

@@ -1,4 +1,5 @@
-const WS = new WebSocket('ws://127.0.0.1:5000/ws_stream');//使用https时需要wss协议，使用http仅需要ws协议
+const domain = window.location.host.split(':')[0];
+const WS = new WebSocket(`wss://${domain}/ws_stream`);//使用https时需要wss协议，使用http仅需要ws协议
 let ANSWER_SPAN = null;
 
 WS.onopen = function () {

@@ -159,7 +159,7 @@
     const generateStatus = ref(false);
     const toggleGStatus = (val) => (generateStatus.value = val);
     const queryTxt = ref("");
-
+    const domain = window.location.host.split(':')[0];
     /**
      * 生成消息
      * socketStatus 连接状态
@@ -172,7 +172,7 @@
       send,
       open,
       data: socketData,
-    } = useWebSocket("ws://127.0.0.1:5000/ws");
+    } = useWebSocket(`wss://${domain}/ws`);
     const reload = () => {
       open();
       toggleGStatus(false);
